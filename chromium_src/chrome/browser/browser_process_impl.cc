@@ -17,6 +17,7 @@
 #include "brightray/browser/brightray_paths.h"
 #include "chrome/browser/background/background_mode_manager.h"
 #include "chrome/browser/browser_shutdown.h"
+#include "chrome/browser/chrome_device_client.h"
 #include "chrome/browser/printing/print_job_manager.h"
 #include "chrome/browser/profiles/profile_manager.h"
 #include "chrome/browser/shell_integration.h"
@@ -69,6 +70,8 @@ BrowserProcessImpl::BrowserProcessImpl(
 #if defined(OS_MACOSX)
   ui::InitIdleMonitor();
 #endif
+
+  device_client_.reset(new ChromeDeviceClient);
 
 #if BUILDFLAG(ENABLE_EXTENSIONS)
   extension_event_router_forwarder_ = new extensions::EventRouterForwarder;

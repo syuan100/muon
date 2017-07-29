@@ -25,6 +25,7 @@
 #include "net/log/net_log.h"
 
 class TabManager;
+class ChromeDeviceClient;
 
 namespace atom {
 
@@ -178,6 +179,8 @@ class BrowserProcessImpl : public BrowserProcess {
   component_updater::ComponentUpdateService* component_updater(
       std::unique_ptr<component_updater::ComponentUpdateService> &,
       bool use_brave_server);
+
+  std::unique_ptr<ChromeDeviceClient> device_client_;
 
 #if defined(OS_WIN) || defined(OS_MACOSX) || defined(OS_LINUX)
   // Any change to this #ifdef must be reflected as well in
