@@ -2474,7 +2474,7 @@ void WebContents::OnRendererMessageSync(const base::string16& channel,
 }
 
 void WebContents::OnRendererMessageShared(const base::string16& channel,
-                                         const base::SharedMemoryHandle& handle) {
+                                      const base::SharedMemoryHandle& handle) {
   std::vector<v8::Local<v8::Value>> args = {
     mate::StringToV8(isolate(), channel),
     brave::SharedMemoryWrapper::CreateFrom(isolate(), handle).ToV8(),
