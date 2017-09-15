@@ -253,6 +253,9 @@ void TabHelper::WillCloseWindow(bool* prevent_default) {
     browser()->window()->Deactivate();
     browser()->window()->Hide();
   }
+  if (!browser_shutdown::IsTryingToQuit()) {
+    *prevent_default = true;
+  }
 }
 
 void TabHelper::OnBrowserRemoved(Browser* browser) {
